@@ -1,0 +1,42 @@
+name: ddd
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.5 <4.0.0'
+
+dependencies:
+  bloc: ^8.1.4
+  cloud_firestore: ^4.15.8
+  dartz: ^0.10.1
+  firebase_auth: ^4.17.8
+  firebase_core: ^2.27.0
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.5
+  freezed_annotation: ^2.4.1
+  get_it: ^7.6.7
+  google_sign_in: ^6.2.1
+  injectable: ^2.3.5
+  fluttertoast: ^8.2.4
+  uuid: ^4.3.3
+  auto_route: ^7.8.4
+  rive: ^0.13.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner:
+  freezed: ^2.4.7
+  injectable_generator: ^2.4.2
+  auto_route_generator: ^7.1.1
+
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/animations/
