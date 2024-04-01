@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rive/rive.dart';
 
-import 'Package:ddd/app_router.gr.dart';
-
 @RoutePage(name: 'SplashPage')
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -18,13 +16,14 @@ class SplashPage extends StatelessWidget {
         state.maybeMap(
             authenticated: (_) =>
                 Future.delayed(const Duration(seconds: 3)).then((value) {
-                  Fluttertoast.showToast(
-                    msg: 'Authenticated SuccessFully',
-                  );
-                  context.replaceRoute(const NotesPage());
+                  Fluttertoast.showToast(msg: 'Authenticated Successfully');
+                  // context.replaceRoute(const NotesPage());
                 }),
-            orElse: () => Future.delayed(const Duration(seconds: 3))
-                .then((value) => context.replaceRoute(const SignInPage())));
+            orElse: () =>
+                Future.delayed(const Duration(seconds: 3)).then((value) {
+                  Fluttertoast.showToast(msg: 'Unauthenticated');
+                  //context.replaceRoute(const SignInPage());
+                }));
       },
       child: const Scaffold(
         body: SizedBox(
