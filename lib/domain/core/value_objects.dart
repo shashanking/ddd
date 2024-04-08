@@ -1,6 +1,6 @@
+import 'package:dartz/dartz.dart';
 import 'package:ddd/domain/core/errors.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dartz/dartz.dart';
 import 'package:uuid/uuid.dart';
 
 import 'failures.dart';
@@ -13,7 +13,9 @@ abstract class ValueObject<T> {
 
   /// throws [UnexpectedErrorValue] on [ValueFailuree]
   // id = identity i.e. same as (r)=>r
-  T get getORCrash => value.fold((l) => throw UnexpectedValueError(err: l), id);
+  T get getORCrash {
+    return value.fold((l) => throw UnexpectedValueError(err: l), id);
+  }
 
   @override
   bool operator ==(covariant ValueObject<T> other) {
@@ -21,6 +23,9 @@ abstract class ValueObject<T> {
 
     return other.value == value;
   }
+
+  Either<ValueFailure<dynamic>, dynamic> get failureOrUnit =>
+      value.fold((l) => left(l), (r) => right(unit));
 
   bool isValid() => value.isRight();
 

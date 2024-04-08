@@ -22,7 +22,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final userOption = await _iAuthFacade.getSignedInUser();
     emit(userOption.fold(() => const AuthState.unauthenticated(),
         (_) => const AuthState.authenticated()));
-    userOption.fold(() => null, (a) => print(a.uid));
   }
 
   FutureOr<void> _signOut(SignOut event, Emitter<AuthState> emit) async {
