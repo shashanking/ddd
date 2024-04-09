@@ -27,8 +27,12 @@ abstract class Note with _$Note {
   Option<ValueFailure<dynamic>> get failureOption => body.failureOrUnit
       .andThen(todos.failureOrUnit)
       .andThen(todos.getORCrash
+          // Returns a list containing the results of applying the given [transform]
           .map((todoItem) => todoItem.failureOption)
+          // Returns a list containing only elements matching the given [predicate].
           .filter((o) => o.isSome())
+          // Returns an element at the given [index] or the result of calling the [defaultValue]
+          // function if the [index] is out of bounds of this list.
           .getOrElse(0, (_) => none())
           .fold(() => right(unit), (f) => left(f)))
       .fold((l) => some(l), (_) => none());
